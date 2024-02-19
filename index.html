@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?   family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel='stylesheet' href ='css\style.css'>
+  <title>Кабинет поставщика</title>
+</head>
+<body>
+  <!-- Header Panel -->
+  <div class="header">
+    <!-- Loading Modal -->
+    <div id="loadingModal" class="modal">
+      <div class="modal-content">
+        <div class="loader"></div>
+      </div>
+    </div>
+
+    <!-- Model Add -->
+    <div id="model-add" class="model_add">
+      <div class="model_box">
+        <div class="pattern_title_main">Выберите товар, работу, услугу из сведений о контракте</div>
+        <div class="block_cont">
+          <div class="pattern_title">Наименование товара(работы,услуги)</div>
+          <input class="form-control title_object_model" type="text">
+          <button class="btn btn-secondary btn_refresh">Сбросить</button>
+        </div>
+        <div class="switcher_model_obj">
+          <input class="form-check-input checkbox__input" type="checkbox">
+          <label class="form-check-label pattern_title">Показать строки с нулевым количеством</label>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col"><input type="checkbox"></th>
+                <th scope="col">Код товара <br> Наименование товара(работы, услуги)</th>
+                <th scope="col">Единица измерения</th>
+                <th scope="col">Цена (тариф) за единицу измерения</th>
+                <th scope="col">Количество (объем)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>42.11.20.900 <br> Выполнение работ по благоустройству прилегающих территорий (асфальтирование дорожек) по адресу г. Сыктывкар, ул. Зои Космодемьянской, 228, МБДОУ "Детский сад № 69"</td>
+                <td>Условная единица</td>
+                <td>692 413,26</td>
+                <td><input class="form-control input_kolvo" type="number" value="1"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="btn_nav_model">
+          <button id="close-model-btn" class="btn btn-secondary btn_styling_model">Отменить</button>
+          <button id="btn-add-tab3" class="btn btn-primary btn_styling_model">Добавить</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Model Add Tab 4 -->
+    <div id="model-add-tab4" class="model_add">
+      <div class="model_box">
+        <div class="pattern_title_main">Добавить информацию о документе-основании</div>
+        <div class="block_cont_tab4">
+          <div class="pattern_title_tab4">Наименование документа-основания</div>
+          <input class="form-control title_object_model_tab4" type="text">
+        </div>
+        <div class="block_cont_tab4">
+          <div class="pattern_title_tab4">Номер документа-основания</div>
+          <input class="form-control title_object_model_tab4" type="text">
+        </div>
+        <div class="block_cont_tab4">
+          <div class="pattern_title_tab4">Дата документа-основания</div>
+          <div><input type="date" class="form-control date_input_tab4"></div>
+        </div>
+        <div class="block_cont_tab4">
+          <div class="pattern_title_tab4">Дополнительные сведения о документе-основании</div>
+          <input class="form-control title_object_model_tab4" type="text">
+        </div>
+        <div class="btn_nav_model">
+          <button id="close-model-btn4" class="btn btn-secondary btn_styling_model">Отменить</button>
+          <button id="btn-add-tab4" class="btn btn-primary btn_styling_model">Добавить</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bar -->
+    <div class="bar">
+      <div class="header_line">
+        <div class="header_logo">
+          <img id="menuPanel" src="img/menuPanel.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <!-- Container -->
+    <div class="container">
+      <div class="header_iner">
+        <div class="header_title">
+          <a href="#" class="disabled-link">Личный Кабинет поставщика</a>
+        </div>
+        <nav class="nav">
+          <a href="#"><img src="img/playNav.png" alt=""></a>
+          <a href="#"><img src="img/searchNav.png" alt=""></a>
+          <a href="#"><img src="img/helpNav.png" alt=""></a>
+          <a href="#"><img src="img/userNav.png" alt=""></a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block of panel elements -->
+<div class="panel_elements">
+  <div class="container_elements">
+    <!-- Name of block -->
+    <div class="header_element">
+      <div class="name_of_document">
+        Документ о приемке
+      </div>
+      <div class="closeBtn">
+        <a href="#" id="closeButton"><img src="img/closeBtn.png" alt=""></a>
+      </div>
+    </div>
+      <!-- step-status of operation -->
+      <div class="line"></div>
+      <div class="steps">
+        <div id="content_tab_1" class="number_tab is-active" data_tab_name="tab1">
+          <div><img src="img/nums/numOne.png" alt=""></div>
+          <div class="description_number">Общая информация</div>
+        </div>
+        <div id="content_tab_2" class="number_tab" data_tab_name="tab2">
+          <div><img src="img/nums/numTwo.png" alt=""></div>
+          <div class="description_number">Контрагенты</div>
+        </div>
+        <div id="content_tab_3" class="number_tab" data_tab_name="tab3">
+          <div><img src="img/nums/numThree.png" alt=""></div>
+          <div class="description_number">Конструктивные решения и выды работ</div>
+        </div>
+        <div id="content_tab_4" class="number_tab" data_tab_name="tab4">
+          <div><img src="img/nums/numFour.png" alt=""></div>
+          <div class="description_number">Факт выполнения работ</div>
+        </div>
+        <div id="content_tab_5" class="number_tab" data_tab_name="tab5">
+          <div><img src="img/nums/numFive.png" alt=""></div>
+          <div class="description_number">Подписанты</div>
+        </div>
+        <div id="content_tab_6" class="number_tab" data_tab_name="tab6">
+          <div><img src="img/nums/numSix.png" alt=""></div>
+          <div class="description_number">Дополнительные документы</div>
+        </div>
+        <div id="content_tab_7" class="number_tab" data_tab_name="tab7">
+          <div><img src="img/nums/numSeven.png" alt=""></div>
+          <div class="description_number">Подписание</div>
+        </div>
+      </div>
+      <!-- ВОТ ТУТ В СОДЕРЖИМОМ ПРОСТОС ДИВЫ НОВЫЕ ДЕЛАЕТЕ И ТАМ УЖЕ ИНПУТЫ И НАЗВАНИЕ ПОЛЕЙ, ПОТОМ В CSS МОЖЕТЕ РАЗДЕЛИТЬ БОРДЕРОМ -->
+      <div class="tab_container">
+          <div id="tab1" class="tab_content is-active tab1">
+            mmm
+          </div>
+          <div id="tab2" class="tab_content ">
+            <div class="case_zakaz_postav">
+              <div class="name_case is-active zakaz" data_tab_name="tabs-1">Заказчик
+              </div>
+              <div class="name_case post" data_tab_name="tabs-2">Поставщик
+              </div>
+            </div>
+              <div class="case_content">
+              <div  class="tabs tabs-1 is-active">
+                <div class="info_zakaz">Информация о заказчике</div>
+                <div class="defFlex typeOfCompany">
+                  <div class="defContTittle">Тип организации</div>
+                  <div class="defContInfo">Юридическое лицо</div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Структурное подраздиление</div>
+                <div class="defContInfo"><input class="input_styling" type="text"></div>
+              </div>
+              <div class="defFlex">
+                <div class="defContTittle">Краткое наменование организации</div>
+                <div class="defContInfo">МЕБДОУ "ДЕТСКИЙ САД №69" ГСЫКТЫВКАРА</div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Полное наменование организации</div>
+                <div class="defContInfo">МУНИЦИПАЛЬНОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ "ДЕТСКИЙ САД №69" ГСЫКТЫВКАРА</div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">ОКПО</div>
+                <div class="defContInfo">50400437</div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Код по сводному реестру</div>
+                <div class="defContInfo">50400437</div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">ИНН</div>
+                <div class="defContInfo">50400437</div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">КПП</div>
+                <div class="defContInfo">50400437</div>
+              </div>
+              <div class="update_adres">Обновить адрес на основании сведений сводного реестра организаций</div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Указать адрес в структурной форме</div>
+                <label class="form-check form-switch form-switch-md">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                </label>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="adress">Адрес местонахождения</div>
+                <div class="input_tittle_index">Индекс</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle ">Код региона</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Район</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Город</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Населенный пункт</div>
+                <div class="index"><input class="input_styling widthing_input"type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Улица</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Дом</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Корпус, строение</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Офис, квартира</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Номер контактного телефона/факса</div>
+                <div class="defContInfo"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Адрес электронной почты</div>
+                <div class="defContInfo"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="info_zakaz">Информация об инвесторе</div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Наименование / ФИО</div>
+                <div class="defContInfo"><input class="input_styling" type="text"></div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">ИНН</div>
+                <div class="defContInfo"><input class="input_styling" type="text"></div>
+              </div>
+              <div class="info_zakaz">Место выполнения работ</div>
+              <div class="btnAdd"><button class="btn_styling_model">Добавить</button></div>
+              <div class="table_model_tovar">
+                <table class="table_placement">
+                  <tr>
+                  <td>Страна</td>
+                  <th>Субъект РФ/Город федерального назначения</th>
+                  <th>Город/Район</th>
+                  <th>Населенный пункт</th>
+                  <th>Место</th>
+                  </tr>
+                  <tbody>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="block_btn_nav">
+              <div><button class="btn_back">Назад</button></div>
+              <div class="right_place"><button class="btn_save">Сохранить и проверить на нарушения</button>
+              <button class="btn_next">далее</button></div> 
+            </div>
+              </div>
+              <div  class="tabs tabs-2">
+                <div class="info_zakaz">Поставщик</div>
+                <div class="defFlex typeOfCompany">
+                  <div class="defContTittle">Тип организации</div>
+                  <div class="defContInfo">Индивидуальный предприниматель</div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">ИНН</div>
+                <div class="defContInfo">110105442301</div>
+              </div>
+              <div class="defFlex">
+                <div class="defContTittle">Реквизиты свидетельства о госудераственной регистрации индивидуального предпринимателя</div>
+                <div class="defContInfo">МЕБДОУ "ДЕТСКИЙ САД №69" ГСЫКТЫВКАРА</div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Фамилия</div>
+                <div class="defContInfo">СКРИПНИК</div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Имя</div>
+                <div class="defContInfo">Роман</div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Отчество</div>
+                <div class="defContInfo">Николаевич</div>
+              </div>
+              <div class="update_adres">Обновить адрес на основании сведений сведений еруза</div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Указать адрес в структурной форме</div>
+                <label class="form-check form-switch form-switch-md">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                </label>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="adress">Адрес местонахождения</div>
+                <div class="input_tittle_index">Индекс</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle ">Код региона</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Район</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Город</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Населенный пункт</div>
+                <div class="index"><input class="input_styling widthing_input"type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Улица</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Дом</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Корпус, строение</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="input_tittle">Офис, квартира</div>
+                <div class="index"><input class="input_styling widthing_input" type="text"></div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Номер контактного телефона/факса</div>
+                <div class="defContInfo">7 9042711060</div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Адрес электронной почты</div>
+                <div class="defContInfo">krovteks2@mail.ru</div>
+              </div>
+              <div class="info_zakaz">Банковские(платежные) данные </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Указать адрес в структурной форме</div>
+                <label class="form-check form-switch form-switch-md">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                </label>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Тип счета</div>
+                <div class="defContInfo"><input class="input_styling" type="text"></div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">БИК*</div>
+                <div class="defContInfo">048702640</div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Наименование банка*</div>
+                <div class="defContInfo">КОМИ ОТДЕЛЕНИЕ №8617 ПАО СБЕРБАНК</div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Корреспондентский счет банка</div>
+                <div class="defContInfo">301018104000000640</div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Расчетный счет</div>
+                <div class="defContInfo">40803123012300976</div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">КБК</div>
+                <div class="defContInfo"><input class="input_styling" type="text"></div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Код по ОКТМО</div>
+                <div class="defContInfo"><input class="input_styling" type="text"></div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Наименование контрагента для платежного поручения</div>
+                <div class="defContInfo"><input class="input_styling" type="text"></div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">УИП/УИН</div>
+                <div class="defContInfo"><input class="input_styling" type="text"></div>
+              </div>
+              <div class="block_btn_nav">
+                <div><button class="btn_back">Назад</button></div>
+                <div class="right_place"><button class="btn_save">Сохранить и проверить на нарушения</button>
+                <button class="btn_next">далее</button></div> 
+              </div>
+              </div>
+            </div>
+          </div>
+          <div id="tab3" class="tab_content">
+              <div id="tab3-1" class="tab3_1 is-active">
+                <div class="info_zakaz">Информация о заказчике</div>
+                <div class="checkboxes_container checboxes_for_3tab">
+                    <div class="checkes">
+                      <div class="checks_one">
+                            <div class="form_checkbox"><input type="checkbox"><div class="title_checkbox_input">Производить расчет НДС в итоговых строках</div></div>
+                      </div>
+                      <div class="checks_two">
+                          <div class="form_checkbox"><input type="checkbox"><div class="title_checkbox_input">Сформировать документ без учета НДС</div></div>
+                          <div class="form_checkbox"><input type="checkbox"><div class="title_checkbox_input">Изменить Наименования столбцов таблицы</div></div>
+                      </div>
+                </div>
+              </div>
+                <div class="hide_checkbox" id="showBtn"><button class="settings">Показать настройки</button></div>
+                <div class="hide_checkbox" id="hideBtn" style="display: none"><button class="settings">Скрыть настройки</button></div>
+                <div class="info_zakaz">Информация об объекте строительства</div>
+                <div class="block_cont">
+                    <div class="pattern_title">Наименование объекта*</div>
+                    <input class="title_object" type="text">
+                </div>
+                <div class="info_zakaz">Конструктивные решения и виды работ</div>
+                <div class="solutions_text">Если в рамках выполненных работ были поставлены товары, которые подлежат принятию заказчиком к бухгалтерскому учету в качестве объектов основных средств, то данные товары должны быть добавлены отдельными
+                  строками в таблицу конструктивных решений (видов работ).</div>
+                <div class="block_cont">
+                    <div class="pattern_title">Поиск</div>
+                    <input class="search_obj" type="text">
+                    <button class="btn_refresh" >Сбросить</button>
+                    <button class="btn_search" >Найти</button>
+                </div>
+                <div class="container_model_adding">
+                    <button id="open-model-btn" class="btn_styling_model" >Добавить</button>
+                    
+                </div>
+                <div class="inf_adding">Информация о конструктивных решениях и видах работ не добавлена</div>
+                <div class="block_btn_nav">
+                  <div><button class="btn_back">Назад</button></div>
+                  <div class="right_place"><button class="btn_save">Сохранить и проверить на нарушения</button>
+                  <button class="btn_next">далее</button></div> 
+                </div>
+              </div>
+              <div id="tab3-2" class="tab3_2 hidden">
+                <div class="info_zakaz">Товар, работа, услуга</div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Тип организации</div>
+                  <div class="defContInfo">Юридическое лицо</div>
+                </div>
+                <div class="defFlex title_comp">
+                  <div class="defContTittle">Указать адрес в структурной форме</div>
+                  <label class="form-check form-switch form-switch-md">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                  </label>
+                </div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Позиция по смете контракта</div>
+                  <div class="defContInfo"><input class="input_styling" type="text"></div>
+                </div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Код товара</div>
+                  <div class="defContInfo">42.11.20</div>
+                </div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Наименование товара(работы,услуги)*</div>
+                  <div class="defContInfo"><input id="name-of-uslug" class="input_styling" type="text"></div>
+                </div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Наименование единицы измерения</div>
+                  <div class="defContInfo_code_edenic">Код единицы измерения</div>
+                  <div class="defContInfo">Условная единица</div>
+                </div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Количество (объем)*</div>
+                  <div class="defContInfo"><input class="input_styling" type="text"></div>
+                </div>
+                <div class="defFlex title_comp">
+                  <div class="defContTittle">Завершить активирование по данной позиции</div>
+                  <label class="form-check form-switch form-switch-md">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                  </label>
+                </div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Тип организации</div>
+                  <div class="defContInfo">Юридическое лицо</div>
+                </div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Тип организации</div>
+                  <div class="defContInfo">Юридическое лицо</div>
+                </div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Тип организации</div>
+                  <div class="defContInfo">Юридическое лицо</div>
+                </div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Тип организации</div>
+                  <div class="defContInfo">Юридическое лицо</div>
+                </div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Тип организации</div>
+                  <div class="defContInfo">Юридическое лицо</div>
+                </div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Тип организации</div>
+                  <div class="defContInfo">Юридическое лицо</div>
+                </div>
+                <div class="defFlex title_comp">
+                  <div class="defContTittle">Завершить активирование по данной позиции</div>
+                  <label class="form-check form-switch form-switch-md">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                  </label>
+                </div>
+                <div class="btn_nav_adding_tab">
+                  <button id="cancel-tabs3" class="cancel">Отменить</button>
+                  <button id="save-tabs3" class="save">Сохранить</button>
+                </div>
+              </div>
+                <div id="tab3-3" class="tab3_3 hidden">
+                  <div class="info_zakaz">Настройки для формирования документа</div>
+                  <div class="checkboxes_container checboxes_for_3tab">
+                    <div class="checkes">
+                      <div class="checks_one">
+                            <div class="form_checkbox"><input type="checkbox"><div class="title_checkbox_input">Производить расчет НДС в итоговых строках</div></div>
+                      </div>
+                      <div class="checks_two">
+                          <div class="form_checkbox"><input type="checkbox"><div class="title_checkbox_input">Сформировать документ без учета НДС</div></div>
+                          <div class="form_checkbox"><input type="checkbox"><div class="title_checkbox_input">Изменить Наименования столбцов таблицы</div></div>
+                      </div>
+                    </div>
+                </div>
+                <div class="hide_checkbox" id="showBtn"><button class="settings">Показать настройки</button></div>
+                <div class="hide_checkbox" id="hideBtn" style="display: none"><button class="settings">Скрыть настройки</button></div>
+                <div class="info_zakaz">Информация об объекте строительства</div>
+                <div class="defFlex Struct">
+                  <div class="defContTittle">Наименование объекта*</div>
+                  <div class="defContInfo"><input class="input_styling" type="text"></div>
+                </div>  
+                <div class="info_zakaz">Конструктивные решения и виды работ</div>
+                <div class="solutions_text">Если в рамках выполненных работ были поставлены товары, которые подлежат принятию заказчиком к бухгалтерскому учету в качестве объектов основных средств, то данные товары должны быть добавлены отдельными
+                  строками в таблицу конструктивных решений (видов работ).</div>
+                <div class="block_cont">
+                    <div class="pattern_title">Поиск</div>
+                    <input class="search_obj" type="text">
+                    <button class="btn_refresh" >Сбросить</button>
+                    <button class="btn_search" >Найти</button>
+                </div>
+                <div class="div table_of_solutions">
+                  <table class="table_tovar">
+                    <tr>
+                    <td>№</td>
+                    <th>Наименование конструктивных решений (элементов), комплексов (видов) работ, затрат, оборудования</th>
+                    <th>Позиция по смете контракта</th>
+                    <th>Единица измерения</th>
+                    <th>Количество (объем)<</th>
+                    <th>Цена за единицу измерения без НДС</th>
+                    <th>Стоимость без налога - всего</th>
+                    <th>Сумма налога</th>
+                    <th>Стоимость с налогом - всего</th>
+                    <th>Страна происхождения</th>
+                    </tr>
+                    <tbody>
+                      <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                      </tr>
+                      <tfoot>
+                        <tr>
+                          <td colspan="6"></td>
+                          <td colspan="2">Всего по акту:</td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td colspan="6"></td>
+                          <td colspan="2">Без НДС</td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tfoot>
+                  </table>
+                  
+                </div>
+                  <div class="btn_nav_adding_tab">
+                    <button id="cancel-tabs3-3" class="cancel">Отменить</button>
+                    <button id="save-tabs3-3" class="save">Сохранить</button>
+                  </div>
+              </div>
+          </div>
+          <div id="tab4" class="tab_content ">
+            <div class="info_zakaz">Информация о передаче результатов выполненных работ</div>
+            <div class="defFlex Struct">
+              <div class="defContTittle">Содержимое операции*</div>
+              <div class="defContInfo"><input class="input_styling" type="text"></div>
+            </div>
+            <div class="defFlex Struct">
+              <div class="defContTittle">Дата передачи результатов выполненных работ</div>
+              <div class="defContInfo"><input type="date" class="date-input"></div>
+            </div>  
+            <div class="defFlex Struct">
+              <div class="defContTittle">Дата начала периода выполнения работ</div>
+              <div class="defContInfo"><input type="date" class="date-input"></div>
+            </div>  
+            <div class="defFlex Struct">
+              <div class="defContTittle">Дата окончания периода выполнения работ</div>
+              <div class="defContInfo"><input type="date" class="date-input"></div>
+            </div>
+            <div class="info_zakaz">Информация об основании передаче результатов выполненных работ</div>
+            <div class="defFlex title_comp">
+              <div class="defContTittle">Указать сведенья о документе-основании</div>
+              <label class="form-check form-switch form-switch-md">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              </label>
+            </div>
+            <div class="container_model_adding">
+              <button id="open-model-btn-tab4" class="btn_styling_model" >Добавить</button>
+              
+          </div>
+            <div class="block_btn_nav">
+              <div><button class="btn_back">Назад</button></div>
+              <div class="right_place"><button class="btn_save">Сохранить и проверить на нарушения</button>
+              <button class="btn_next">далее</button></div> 
+            </div>
+          </div>
+          <div id="tab5" class="tab_content ">
+            <div id="tab3-1" class="tab3_1 is-active">
+              <div class="info_zakaz">Информация о подписанте</div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Фамилия, имя, отчество подписанта  *</div>
+                <div class="dropdown">
+                  <input type="text" class="input_podpisant" placeholder="Поиск" onclick="toggleDropdown()">
+                  <div class="dropdown-content" id="dropdownContent">
+                      <a href="#" onclick="selectName('Скрипник РОМАН НИКОЛАЕВИЧ', 'Индивидуальный предприниматель', 'Лицо, ответственное за оформление документов о приемке', 'Лицо, являющееся индивидуальным предпринимателем')">Скрипник РОМАН НИКОЛАЕВИЧ</a>
+                      <a href="#" onclick="selectName('Иванов ИВАН ИВАНОВИЧ', 'Индивидуальный предприниматель')">Иванов ИВАН ИВАНОВИЧ</a>
+                  </div>
+                </div>
+              </div> 
+              <div class="defFlex title_comp">
+                <div class="defContTittle">ИНН</div>
+                <div class="defContInfo">110105442301</div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Тип подписанта</div>
+                <div class="defType"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Статус</div>
+                <div class="defContInfo">Индивидуальный предприниматель</div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Полномочия</div>
+                <div class="defCredentials"></div>
+              </div>
+              <div class="defFlex title_comp">
+                <div class="defContTittle">Основание полномочий (доверия)</div>
+                <div class="defCredentialsTrust"></div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Реквизиты свидетельства о государственной регистрации индивидуального предпринимателя</div>
+                <div class="defContInfo"><input class="input_styling" type="text"></div>
+              </div>
+              <div class="defFlex Struct">
+                <div class="defContTittle">Иные сведения, идентифициующие физическое лицо</div>
+                <div class="defContInfo"><input class="input_styling" type="text"></div>
+              </div>
+              <div class="block_btn_nav">
+                <div><button class="btn_back">Назад</button></div>
+                <div class="right_place"><button class="btn_save">Сохранить и проверить на нарушения</button>
+                <button class="btn_next">далее</button></div> 
+              </div>
+          </div>
+        </div>
+          <div id="tab6" class="tab_content ">
+            <div class="info_zakaz">Дополнительные документы</div>
+                <div class="defContInfo">Вы можете прикрепить документы, не требующие подписания со стороны Заказчика</div>
+              <div class="info_docs">1. Платежно-расчетные документы</div>
+                <div class="custom-file-label" onclick="document.getElementById('fileInput1').click();">ПРИКРЕПИТЬ ФАЙЛ</div>
+                <input type="file" id="fileInput1" class="custom-file-input" onchange="handleFileSelect(event)">
+                <div id="selectedFileNames1" class="selected-file">Вы не прикрепили ни одного файла</div>
+              <div class="info_docs">2. Документы, содержащие информацию о стране происхождения товара или о производителе товара</div>
+                <div class="custom-file-label" onclick="document.getElementById('fileInput2').click();">ПРИКРЕПИТЬ ФАЙЛ</div>
+                <input type="file" id="fileInput2" class="custom-file-input" onchange="handleFileSelect(event)">
+                <div id="selectedFileNames2" class="selected-file">Вы не прикрепили ни одного файла</div>
+              <div class="info_docs">3. Прочие, документы, предусмотренные контрактом</div>
+              <div class="defLine">Прикрепите документы, подтверждающие передачу товаров (выполнения работы, оказания услуг), документы-основания сдачи/приемки, копии таможенных декларация на товар и иные документы</div>
+                <div class="custom-file-label" onclick="document.getElementById('fileInput3').click();">ПРИКРЕПИТЬ ФАЙЛ</div>
+                <input type="file" id="fileInput3" class="custom-file-input" onchange="handleFileSelect(event)">
+                <div id="selectedFileNames3" class="selected-file">Вы не прикрепили ни одного файла</div>
+            <div class="block_btn_nav">
+              <div><button class="btn_back">Назад</button></div>
+              <div class="right_place"><button class="btn_save">Сохранить и проверить на нарушения</button>
+              <button class="btn_next">далее</button></div> 
+            </div>
+          </div>
+          <div id="tab7" class="tab_content ">
+            <div class="info_zakaz">Проверка и подписание</div>
+            <div class="case_zakaz_postav">
+              <div class="name_case is-active docs" data_tab_name="tabs-4">Печатная форма
+              </div>
+              <div class="name_case xml_docs" data_tab_name="tabs-5">XML (титул заказчика)
+              </div>
+            </div>
+            <div class="case_content">
+              <div class="tabs tabs-4 is-active">
+                <div id="documentContainer"></div>
+                <div class="defFlex Struct">
+                  <div class="doc_lines">Документ подписан электронной подписью</div>
+                  <div class="doc_lines">Владелец сертификата</div>
+                  <div class="doc_lines">Сертификат</div>
+                  <div class="doc_lines">Дата и время подписания</div>
+                </div>
+                  <div class="form_checkbox"><input type="checkbox"><div class="agreement_lines">Я подтверждаю, что согласен на подписание указанной информации и прикрепленных файлов своей электронной подписью и размещение их в реестре документов об исполнении контракта.
+                      Я уведомлен о персональной ответственности за соблюдение требований, установленных статьями 168, 169 Налогового кодекса Российской Федерации.</div></div>
+                    </div>
+                    <div class="agreement_lines">Направляя документ в электронной форме, я даю согласие на обработку персональных данных</div>
+                <div class="block_btn_nav">
+                  <div><button class="btn_back">Назад</button></div>
+                  <button class="btn_next">Подписать и направить заказчику</button></div> 
+                </div>
+              </div>
+              <div class="tabs tabs-5">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
